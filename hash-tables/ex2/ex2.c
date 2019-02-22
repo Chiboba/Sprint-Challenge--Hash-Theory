@@ -21,7 +21,8 @@ char **reconstruct_trip(Ticket **tickets, int length)
   }
   route[index] = location;
   // YOUR CODE HERE
-  
+  destroy_hash_table(ht);
+
   return route;
 }
 
@@ -30,6 +31,7 @@ void print_route(char **route, int length)
   for (int i = 0; i < length; i++) {
     printf("%s\n", route[i]);
   }
+  free(route);
 }
 
 
@@ -56,7 +58,10 @@ int main(void)
   tickets[2] = ticket_3;
 
   print_route(reconstruct_trip(tickets, 3), 3); // PDX, DCA, NONE
-
+  free(ticket_1);
+  free(ticket_2);
+  free(ticket_2);
+  free(tickets);
   return 0;
 }
 #endif

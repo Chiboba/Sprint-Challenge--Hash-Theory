@@ -20,11 +20,11 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
         answer->index_1 = found;
         answer->index_2 = i;
       }
+      destroy_hash_table(ht);
       return answer;
     }
   }
-  
-  
+  destroy_hash_table(ht);
   return NULL;
 }
 
@@ -35,6 +35,7 @@ void print_answer(Answer *answer)
   } else {
     printf("NULL\n");
   }
+  free(answer);
 }
 
 #ifndef TESTING
